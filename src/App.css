@@ -1,0 +1,657 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.app {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  height: 70px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  background: linear-gradient(
+    135deg,
+    #02103a,
+    #001f6b,
+    #032c8d
+  );
+
+  position: relative;
+  z-index: 100;
+
+  box-shadow: 0 3px 15px rgba(0,0,0,.15);
+}
+
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10*x;
+  color: white;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.logo-mark {
+  color: rgba(255,255,255,.8);
+}
+
+.logo span span {
+  color: white;
+}
+
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-button {
+  width: 38px;
+  height: 34px;
+
+  border: none;
+  border-radius: 4px;
+
+   background: rgba(255,255,255,.15);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 4px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.menu-button:hover {
+  background: #0e2d80;
+}
+
+.menu-button span {
+  width: 14px;
+  height: 2px;
+
+  background: white;
+
+  border-radius: 2px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  height: calc(450px);
+  min-height: 450px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background-image: url("./assets/panel/panel_superior.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* OSCURECER / DESENFOCAR FONDO */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(3px);
+
+  z-index: 1;
+}
+
+
+/* CONTENIDO HERO */
+
+.hero-content {
+  position: absolute;
+
+  top: 23%;
+  left: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  z-index: 3;
+}
+
+.hero-content h1 {
+  color: white;
+
+  font-size: clamp(42px, 5vw, 62px);
+
+  font-weight: 700;
+
+  letter-spacing: -1.5px;
+
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   AUTOS
+========================= */
+
+.hero-cars {
+  position: absolute;
+
+  bottom: -8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(900px, 95%);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  z-index: 5;
+}
+
+.hero-cars img {
+  width: 20%;
+
+  object-fit: contain;
+
+  margin-left: -15px;
+
+  transition: transform 0.3s ease;
+}
+
+.hero-cars img:first-child {
+  margin-left: 0;
+}
+
+.hero-cars img:hover {
+  transform: translateY(-8px);
+}
+
+
+/* =========================
+   BOTONES FLOTANTES
+========================= */
+
+.floating-buttons {
+  position: fixed;
+
+  right: 6px;
+  bottom: 75px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  z-index: 150;
+}
+
+.float-button {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 25px;
+
+  border-radius: 3px;
+
+  transition: 0.2s ease;
+}
+
+.float-button:hover {
+  transform: scale(1.05);
+}
+
+.whatsapp {
+  background: #25d366;
+}
+
+.phone {
+  background: #183da0;
+}
+
+
+/* =========================
+   MENU OVERLAY
+========================= */
+
+.menu-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.48);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  z-index: 200;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 295px;
+  height: 100vh;
+
+  background: white;
+
+  transform: translateX(-100%);
+
+  transition: transform 0.3s ease;
+
+  z-index: 300;
+
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+
+  border-bottom: 2px solid #ef2929;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+
+/* BOTÓN CERRAR */
+
+.close-menu {
+  position: absolute;
+
+  right: 18px;
+  top: 14px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 27px;
+
+  color: white;
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+
+/*
+   Franja superior del menú
+   para que coincida con el overlay
+*/
+
+.side-menu::before {
+  content: "";
+
+  display: block;
+
+  height: 0;
+}
+
+
+/* ITEMS */
+
+.side-menu nav {
+  padding-top: 22px;
+}
+
+.side-menu nav a {
+  display: flex;
+
+  align-items: center;
+
+  height: 55px;
+
+  padding: 0 22px;
+
+  border-bottom: 1px solid #ddd;
+
+  color: #111;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+.side-menu nav a:hover {
+  background: #f5f5f5;
+
+  padding-left: 28px;
+
+  color: #183d9d;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 69px;
+
+    padding: 0 18px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero-content {
+    top: 24%;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+
+    padding: 0 20px;
+  }
+
+  .hero-cars {
+    width: 115%;
+
+    bottom: 5px;
+  }
+
+  .hero-cars img {
+    width: 21%;
+    margin-left: -12px;
+  }
+
+  .side-menu {
+    width: 295px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .hero-cars {
+    width: 140%;
+  }
+
+  .hero-cars img {
+    width: 22%;
+  }
+
+  .floating-buttons {
+    right: 5px;
+    bottom: 25px;
+  }
+
+  .float-button {
+    width: 42px;
+    height: 42px;
+  }
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  width: min(1200px, 95%);
+  margin: auto;
+}
+
+/* =========================
+   MARCAS
+========================= */
+
+.brands-section {
+  padding: 70px 0;
+  background: #fff;
+}
+
+.brands-section h2 {
+  font-size: 42px;
+  margin-bottom: 35px;
+  color: #111;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.brand-card {
+  border: 1px solid #e4e4e4;
+  padding: 25px;
+  text-align: center;
+  background: white;
+  transition: .25s;
+  cursor: pointer;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.brand-card img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.brand-card span {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* =========================
+   AUTOS
+========================= */
+
+.cars-section {
+  background: #f7f7f7;
+  padding: 70px 0;
+}
+
+.cars-section h2 {
+  font-size: 42px;
+  margin-bottom: 35px;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.car-card {
+  background: white;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  transition: .25s;
+}
+
+.car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.car-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.car-info {
+  padding: 20px;
+}
+
+.car-info h3 {
+  color: #173b9b;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: #ff2d2d;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.car-info p {
+  margin-bottom: 5px;
+}
+
+.car-info button {
+  margin-top: 10px;
+  background: #868686;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.car-info a {
+  display: block;
+  margin-top: 15px;
+  color: #173b9b;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.view-all button {
+  background: #173b9b;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+@media (max-width: 576px) {
+
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brands-section h2,
+  .cars-section h2 {
+    font-size: 30px;
+  }
+
+}
+
+/*ajustes de incos y carts de logos de marcas de autos */
+.brand-logo{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+}
+
+.brand-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}

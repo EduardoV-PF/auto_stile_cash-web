@@ -1,0 +1,125 @@
+.featured-section {
+  padding: 60px 0;
+  background: #f5f5f5;
+}
+
+.featured-section h2 {
+  font-size: 38px;
+  margin-bottom: 30px;
+  color: #111;
+   text-align: left !important;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.vehiculo-card {
+  background: white;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.vehiculo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+}
+
+.img-container {
+  position: relative;
+}
+
+.img-container img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.nuevo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  background: #ff2626;
+  color: white;
+
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.anio {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: white;
+  font-weight: bold;
+
+  padding: 5px 10px;
+}
+
+.vehiculo-info {
+  padding: 15px;
+}
+
+.vehiculo-info h3 {
+  color: #173b9b;
+  margin-bottom: 10px;
+}
+
+.precio {
+  color: red;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.categoria {
+  margin-top: 10px;
+
+  border: none;
+  background: gray;
+  color: white;
+
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.vehiculo-info a {
+  display: block;
+  margin-top: 12px;
+  color: #173b9b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.ver-todos {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.ver-todos button {
+  background: #173b9b;
+  color: white;
+
+  border: none;
+  padding: 15px 40px;
+
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .cars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+}
